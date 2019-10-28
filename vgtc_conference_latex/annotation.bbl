@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+
+\bibitem{azuma2003evaluating}
+R.~Azuma and C.~Furmanski.
+\newblock Evaluating label placement for augmented reality view management.
+\newblock In {\em Proceedings of the 2nd IEEE/ACM international Symposium on
+  Mixed and Augmented Reality}, page~66. IEEE Computer Society, 2003.
+
+\bibitem{DBLP:conf/iccv/HeGDG17}
+K.~He, G.~Gkioxari, P.~Doll{\'{a}}r, and R.~B. Girshick.
+\newblock Mask {R-CNN}.
+\newblock In {\em {IEEE} International Conference on Computer Vision, {ICCV}
+  2017, Venice, Italy, October 22-29, 2017}, pages 2980--2988, 2017.
+
+\bibitem{DBLP:conf/chi/JungKSHLKS17}
+D.~Jung, W.~Kim, H.~Song, J.~Hwang, B.~Lee, B.~H. Kim, and J.~Seo.
+\newblock Chartsense: Interactive data extraction from chart images.
+\newblock In {\em Proceedings of the 2017 {CHI} Conference on Human Factors in
+  Computing Systems, Denver, CO, USA, May 06-11, 2017.}, pages 6706--6717,
+  2017.
+
+\bibitem{DBLP:journals/tvcg/PocoMH18}
+J.~Poco, A.~Mayhua, and J.~Heer.
+\newblock Extracting and retargeting color mappings from bitmap images of
+  visualizations.
+\newblock {\em {IEEE} Trans. Vis. Comput. Graph.}, 24(1):637--646, 2018.
+
+\end{thebibliography}

@@ -1,0 +1,205 @@
+% $Id: template.tex 11 2007-04-03 22:25:53Z jpeltier $
+
+\documentclass{vgtc}                          % final (conference style)
+%\documentclass[review]{vgtc}                 % review
+%\documentclass[widereview]{vgtc}             % wide-spaced review
+%\documentclass[preprint]{vgtc}               % preprint
+%\documentclass[electronic]{vgtc}             % electronic version
+
+%% Uncomment one of the lines above depending on where your paper is
+%% in the conference process. ``review'' and ``widereview'' are for review
+%% submission, ``preprint'' is for pre-publication, and the final version
+%% doesn't use a specific qualifier. Further, ``electronic'' includes
+%% hyperreferences for more convenient online viewing.
+
+%% Please use one of the ``review'' options in combination with the
+%% assigned online id (see below) ONLY if your paper uses a double blind
+%% review process. Some conferences, like IEEE Vis and InfoVis, have NOT
+%% in the past.
+
+%% Figures should be in CMYK or Grey scale format, otherwise, colour 
+%% shifting may occur during the printing process.
+
+%% These few lines make a distinction between latex and pdflatex calls and they
+%% bring in essential packages for graphics and font handling.
+%% Note that due to the \DeclareGraphicsExtensions{} call it is no longer necessary
+%% to provide the the path and extension of a graphics file:
+%% \includegraphics{diamondrule} is completely sufficient.
+%%
+\ifpdf%                                % if we use pdflatex
+  \pdfoutput=1\relax                   % create PDFs from pdfLaTeX
+  \pdfcompresslevel=9                  % PDF Compression
+  \pdfoptionpdfminorversion=7          % create PDF 1.7
+  \ExecuteOptions{pdftex}
+  \usepackage{graphicx}                % allow us to embed graphics files
+  \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg} % for pdflatex we expect .pdf, .png, or .jpg files
+\else%                                 % else we use pure latex
+  \ExecuteOptions{dvips}
+  \usepackage{graphicx}                % allow us to embed graphics files
+  \DeclareGraphicsExtensions{.eps}     % for pure latex we expect eps files
+\fi%
+
+%% it is recomended to use ``\autoref{sec:bla}'' instead of ``Fig.~\ref{sec:bla}''
+\graphicspath{{figures/}{pictures/}{images/}{./}} % where to search for the images
+
+\usepackage{microtype}                 % use micro-typography (slightly more compact, better to read)
+\PassOptionsToPackage{warn}{textcomp}  % to address font issues with \textrightarrow
+\usepackage{textcomp}                  % use better special symbols
+\usepackage{mathptmx}                  % use matching math font
+\usepackage{times}                     % we use Times as the main font
+\renewcommand*\ttdefault{txtt}         % a nicer typewriter font
+\usepackage{cite}                      % needed to automatically sort the references
+\usepackage{tabu}                      % only used for the table example
+\usepackage{booktabs}                  % only used for the table example
+%% We encourage the use of mathptmx for consistent usage of times font
+%% throughout the proceedings. However, if you encounter conflicts
+%% with other math-related packages, you may want to disable it.
+
+
+%% If you are submitting a paper to a conference for review with a double
+%% blind reviewing process, please replace the value ``0'' below with your
+%% OnlineID. Otherwise, you may safely leave it at ``0''.
+\onlineid{0}
+
+%% declare the category of your paper, only shown in review mode
+\vgtccategory{Research}
+
+%% allow for this line if you want the electronic option to work properly
+\vgtcinsertpkg
+
+%% In preprint mode you may define your own headline.
+%\preprinttext{To appear in an IEEE VGTC sponsored conference.}
+
+%% Paper title.
+
+\title{Automatic Annotation of Visualizations}
+
+%% This is how authors are specified in the conference style
+
+%% Author and Affiliation (single author).
+%%\author{Roy G. Biv\thanks{e-mail: roy.g.biv@aol.com}}
+%%\affiliation{\scriptsize Allied Widgets Research}
+
+%% Author and Affiliation (multiple authors with single affiliations).
+%%\author{Roy G. Biv\thanks{e-mail: roy.g.biv@aol.com} %
+%%\and Ed Grimley\thanks{e-mail:ed.grimley@aol.com} %
+%%\and Martha Stewart\thanks{e-mail:martha.stewart@marthastewart.com}}
+%%\affiliation{\scriptsize Martha Stewart Enterprises \\ Microsoft Research}
+
+%% Author and Affiliation (multiple authors with multiple affiliations)
+\author{Chufan Lai\textsuperscript{1}\thanks{e-mail: chufan.lai@pku.edu.cn} %
+\and{Zhixian Lin}\textsuperscript{1}\thanks{e-mail: zhixian.lin@pku.edu.cn} %
+\and{Can Liu}\textsuperscript{1}\thanks{e-mail: can.liu@pku.edu.cn} %
+\and{Yun Han}\textsuperscript{1}\thanks{e-mail: yunhan@pku.edu.cn} %
+\and{Ruike Jiang}\textsuperscript{1}\thanks{e-mail: jiangrk@pku.edu.cn} %
+\and Xiaoru Yuan\textsuperscript{1,2}\thanks{e-mail:xiaoru.yuan@pku.edu.cn}}
+\affiliation{\scriptsize 1) Key Laboratory of Machine Perception (Ministry of Education), and School of EECS, Peking University \\ 2) National Engineering Laboratory for Big Data Analysis Technology and Application, Beijing, China}
+
+%% A teaser figure can be included as follows, but is not recommended since
+%% the space is now taken up by a full width abstract.
+%\teaser{
+%  \includegraphics[width=1.5in]{sample.eps}
+%  \caption{Lookit! Lookit!}
+%}
+
+%% Abstract section.
+\abstract{In this paper, we propose a technique for automatically annotating visualizations based on the user's textual descriptions. In our approach, the annotating task is fulfilled by performing a series of automatic visual searches. First, the description of the visualization is parsed into search requests for certain visual entities. At the same time, all visual entities exhibited in the visualization, along with their visual properties are extracted using Object Detection techniques based on Mask-RCNN models. Knowing what are there and what to look for, we then fulfill the generated search requests, so as to anchor each descriptive sentence to the described focal areas. In the next step, the corresponding annotations can be crafted efficiently. We have built a prototype tool that allows the user to upload a visualization image with its descriptions, and generates customized annotations.%
+} % end of abstract
+
+%% ACM Computing Classification System (CCS). 
+%% See <http://www.acm.org/about/class> for details.
+%% We recommend the 2012 system <http://www.acm.org/about/class/class/2012>
+%% For the 2012 system use the ``\CCScatTwelve'' which command takes four arguments.
+%% The 1998 system <http://www.acm.org/about/class/class/2012> is still possible
+%% For the 1998 system use the ``\CCScat'' which command takes four arguments.
+%% In both cases the last two arguments (1998) or last three (2012) can be empty.
+
+\CCScatlist{Storytelling, annotations}
+
+%\CCScatlist{
+  %\CCScat{H.5.2}{User Interfaces}{User Interfaces}{Graphical user interfaces (GUI)}{};
+  %\CCScat{H.5.m}{Information Interfaces and Presentation}{Miscellaneous}{}{}
+%}
+
+%% Copyright space is enabled by default as required by guidelines.
+%% It is disabled by the 'review' option or via the following command:
+% \nocopyrightspace
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% START OF THE PAPER %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%% The ``\maketitle'' command must be the first command after the
+%% ``\begin{document}'' command. It prepares and prints the title block.
+
+%% the only exception to this rule is the \firstsection command
+\firstsection{Introduction}
+
+\maketitle
+
+Visualization plays an important role when people share their data findings. However, reading a visualization could be a non-trivial task. When a description is given about the visualization, the audience needs to comprehend the description, knowing which entities or properties have been mentioned, and then visually search for them in the image. Due to the limited short-term memory, the reader often has to switch frequently between the description and the image.
+
+A simple way to improve this process is to complement the visualization with proper annotations. By providing annotations, the presenter can effectively guide the audience's attention to the image area he/she is describing. It spares the audience the time for visual search and thus increases the efficiency of communication. Despite the benefits, a well-annotated visualization can be difficult to craft. Annotating all entities on the same image requires a good placement~\cite{azuma2003evaluating} to avoid occlusion. An easier way is to annotate one area at each time in a series of animation frames. But a fluent animation still demands time and expertise to make.
+
+In this paper, we propose an automatic visualization-annotating technique to help presenters efficiently craft annotations for the purpose of data story-telling. With the proposed technique, the user can upload a visualization image with the corresponding description, and get a well-annotated visualization in a blink of an eye. Step-by-step animations are provided for a more fluent presentation. To that end, we process the visualization image and description into structured data respectively using state-of-the-art Object Detection (OD) and Natural Language Processing (NLP) techniques. By automatically matching each descriptive sentence with the described visual entities, we can generate the corresponding annotations in an efficient and accurate way.
+
+\section{Design Details}
+
+The proposed automatic annotating technique consists of three major modules: OD, NLP and Annotation. Each module is designed to process a specific part of the visualization.
+
+\subsection{Object Detection}
+The OD module processes the visualization image, and identifies the visual entities exhibited in the visualization. Visual entities can be categorized into two types: the data entities and the auxiliary entities. \textbf{\emph{Data entities}} are visual elements that are used to encode the actual data, like the bars in a bar chart, or the points in a scatterplot. \textbf{\emph{Auxiliary entities}}, on the other hand, often convey the visual mapping or the context of the data. Examples include axes, titles, color legends, data labels, etc. Both types of entities can be referred to by their category names (e.g. ``the X axis"), their visible labels (e.g. ``the temperature"), or their visual properties (e.g. ``the large red point").
+
+For either data~\cite{DBLP:conf/chi/JungKSHLKS17} or auxiliary entities~\cite{DBLP:journals/tvcg/PocoMH18}, there do exist reverse-engineering detection techniques in the visualization community. However, most of them are specialized for certain visualization types. With a new visualization, they need to be redesigned. Seeking to build up a more concise and universal framework, we adopt Mask-RCNN~\cite{DBLP:conf/iccv/HeGDG17}, a state-of-the-art object detection technique, for the purpose of visual entity detection. Fig.~\ref{fig:od_workflow} demonstrates this process.
+
+With the detected contour of each visual entity, we also extract the visual properties (e.g. color, size) and the visible texts (e.g. axis titles, data labels) using Optical Character Recognition (OCR). Such texts are passed to the NLP module to help interpret the description.
+
+\begin{figure*}[t]
+\begin{center}
+ \includegraphics[width=0.8\linewidth]{images/od_workflow.eps}
+  \caption{The workflow of visual entity detection. We collect various types of a) visualization images and b) label the contours of visual entities for model training. The object detection model is able to return c) both the bounding box and the rough contour for each entity. d) We refine the contours so that they can be used for accurate annotating.}
+  \label{fig:od_workflow}
+\end{center}
+\end{figure*}
+
+\subsection{Natural Language Processing}
+ The NLP module handles the textual description, in order to understand what kind of visual entities/properties have been described, and generate the corresponding search requests. More specifically, we first segment the description into sentences. Part-of-speech (POS) tagging and dependency parsing are applied to each sentence respectively to analyze the types of words (e.g. noun, verb, etc.) and the sentence structure.
+
+ Vocabularies are defined to help identify keywords that describe visual properties (e.g. ``red", ``large") and visualization functionalities (e.g. ``axis", ``legend"). Such keywords are often well-known to ordinary people, but seldom visible in the image. Visible texts extracted by OCR are also recognized and bound to their categories (e.g. axis title). A sentence library is also defined for each kind of description (e.g. color/size/axis description) so that we can understand the dependencies between entities and their properties. For example, the phrase ``the points in the middle" has the structure ``[entity] [preposition] [location]", while both ``point" and ``middle" are identified as keywords. Structured data like ${shape: ``point", location: ``middle"}$ are passed to the Annotation module for automatic visual searches.
+
+\subsection{Annotation}
+ The Annotation module matches the detected entities with the search requests, so as to generate the animated annotations for the purpose of data story-telling. Different types (color/size/location) of matching are performed individually, with their results combined to handle composite descriptions (e.g. ``the large red point in the middle"). Once found, the described entities are highlighted in the image, with the descriptive sentence shown aside as the annotation.  A force-directed mechanism is used to place the annotations so that they are close enough to the described entities and won't overlap with any existing entity. Different sentences are displayed in different frames of the animation to promote a step-by-step presentation.
+
+ \section{Case Study}
+For the case study, we present a complicated data story on a grouped bar chart. It depicts the global sales of mobile phones in 2017 for three anonymous companies: X, Y, and Z (Fig.~\ref{fig:case_study_bar}). The x-axis is titled ``Year", while the y-axis is titled ``Sales" with a unit ``Million". Three color legends are present for the three companies.
+
+The description contains 9 sentences: \emph{(1) This image shows the global sales of three top-selling mobile phone brands in the last five years. (2) We see that X Company has always been the best-selling brand. (3) In 2013, the sales of X Company reached 450 million, which were almost three times as much as the sales of Y Company. (4) Even in the worst year, the sales of X Company still remained above 300 million. (5) As the second-ranked brand, Y Company's sales rose steadily from 2013 to 2015. (6) But after 2015, the sales of Y Company were basically stable between 200 million and 250 million. (7) Z Company, on the other hand, shows a rapidly growing trend in the last five years. (8) The sales of Z Company in 2017 were almost as good as the sales of Y Company in 2013. (9) It suggests that Z Company may become a strong competitor to Y Company in the mobile phone market in the near future.}
+
+In sentence (1), the presenter explains the contents of the chart without any particular focus. Therefore, it's a context sentence and is displayed in the empty space (Fig.~\ref{fig:case_study_bar} (a)). In sentence (3), two legends (X Company and Y Company) are mentioned together in the same year ``2013". Bars with the two legend colors are successfully identified and highlighted in this year (Fig.~\ref{fig:case_study_bar} (b)), with the description displayed aside. In sentence (4), an auxiliary line is appended automatically for the numerical threshold ``300 million", which is described using preposition ``above" (Fig.~\ref{fig:case_study_bar} (c)). Similarly, two shaded areas are used in sentence (5) for the two range related descriptions: ``between 200 million and 250 million" and ``after 2015" (Fig.~\ref{fig:case_study_bar} (d)). Sentence (8) is somehow challenging since the two companies are mentioned in different years. We see that the annotation box is placed in the empty space between the two entities (Fig.~\ref{fig:case_study_bar} (e)). It demonstrates the effectiveness of our annotation positioning algorithm. In the last sentence, two companies are mentioned without specifying any axis range. Therefore, all satisfying entities are highlighted (Fig.~\ref{fig:case_study_bar} (f)).
+
+ \begin{figure}[t]
+ \includegraphics[width=1.0\linewidth]{images/case_study.eps}
+  \caption{Automatic annotations for a bar chart with titled axes and color legends.}
+  \label{fig:case_study_bar}
+\end{figure}
+
+\section{Conclusion}
+
+In this paper, we propose an automatic annotating technique to promote efficient data storytelling with visualizations. The presenter can upload a visualization with the corresponding textual description, and get a series of vivid animations with well-annotated visualizations for the purpose of data storytelling. The process is highly efficient and can be finished in seconds. It saves the presenters lots of time and efforts for annotation crafting, allowing them to focus more on the contents of the data stories.
+
+
+%% if specified like this the section will be committed in review mode
+% \acknowledgments{
+% The authors wish to thank A, B, and C. This work was supported in part by
+% a grant from XYZ.}
+
+\bibliographystyle{abbrv}
+%\bibliographystyle{abbrv-doi}
+%\bibliographystyle{abbrv-doi-narrow}
+%\bibliographystyle{abbrv-doi-hyperref}
+%\bibliographystyle{abbrv-doi-hyperref-narrow}
+
+\bibliography{annotation}
+\end{document}
